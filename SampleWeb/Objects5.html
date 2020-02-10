@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+
+            offspring = [];
+
+            haveABaby() {
+                //let newBaby = new Animal("Baby " + this.name);
+                let newBaby = new Animal("Baby " + this.name);
+                this.offspring.push(newBaby);
+                return newBaby;
+            }
+
+            toString() {
+                return '[Animal "' + this.name + '"]';
+            }
+        }
+
+        class Cat extends Animal {
+            constructor(name) {
+                super(name);
+            }
+
+            toString() {
+                return '[Cat "' + this.name + '"]';
+            }
+        }
+
+        var someAnimal = new Animal('Mr. Biggles');
+        var myPet = new Cat('Felix');
+        alert('someAnimal is ' + someAnimal);   // results in 'someAnimal is [Animal "Mr. Biggles"]'
+        alert('myPet is ' + myPet);             // results in 'myPet is [Cat "Felix"]'
+
+        myPet.haveABaby();                    // calls a method inherited from Animal
+        alert(myPet.offspring.length);        // shows that the cat has one baby now
+        alert(myPet.offspring[0]);            // results in '[Animal "Baby Felix"]'
+
+    </script>
+
+
+
+</body>
+</html>

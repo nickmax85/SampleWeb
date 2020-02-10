@@ -1,0 +1,697 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E434328B-F62E-44A0-9575-BA49FEFE02E8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SampleWeb</RootNamespace>
+    <AssemblyName>SampleWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ajaxSamples.html" />
+    <Content Include="Chartjs\Chart.bundle.js" />
+    <Content Include="Chartjs\Chart.bundle.min.js" />
+    <Content Include="Chartjs\Chart.css" />
+    <Content Include="Chartjs\Chart.js" />
+    <Content Include="Chartjs\Chart.min.css" />
+    <Content Include="Chartjs\Chart.min.js" />
+    <Content Include="Chartjs\utils.js" />
+    <Content Include="DataService.svc" />
+    <Content Include="Images\BMNG_world.topo.bathy.200405.3.2048x1024.jpg" />
+    <Content Include="Images\crosshair.png" />
+    <Content Include="Images\dnb_land_ocean_ice_2012.png" />
+    <Content Include="Images\notched-compass.png" />
+    <Content Include="Images\powered-by-bing.png" />
+    <Content Include="Images\pushpins\castshadow-black.png" />
+    <Content Include="Images\pushpins\castshadow-blue.png" />
+    <Content Include="Images\pushpins\castshadow-brown.png" />
+    <Content Include="Images\pushpins\castshadow-gray.png" />
+    <Content Include="Images\pushpins\castshadow-green.png" />
+    <Content Include="Images\pushpins\castshadow-orange.png" />
+    <Content Include="Images\pushpins\castshadow-purple.png" />
+    <Content Include="Images\pushpins\castshadow-red.png" />
+    <Content Include="Images\pushpins\castshadow-teal.png" />
+    <Content Include="Images\pushpins\castshadow-white.png" />
+    <Content Include="Images\pushpins\plain-black.png" />
+    <Content Include="Images\pushpins\plain-blue.png" />
+    <Content Include="Images\pushpins\plain-brown.png" />
+    <Content Include="Images\pushpins\plain-gray.png" />
+    <Content Include="Images\pushpins\plain-green.png" />
+    <Content Include="Images\pushpins\plain-orange.png" />
+    <Content Include="Images\pushpins\plain-purple.png" />
+    <Content Include="Images\pushpins\plain-red.png" />
+    <Content Include="Images\pushpins\plain-teal.png" />
+    <Content Include="Images\pushpins\plain-white.png" />
+    <Content Include="Images\pushpins\plain-yellow.png" />
+    <Content Include="Images\pushpins\push-pin-red.png" />
+    <Content Include="Images\pushpins\push-pin-yellow-32.png" />
+    <Content Include="Images\pushpins\push-pin-yellow.png" />
+    <Content Include="Images\sunTexture.png" />
+    <Content Include="Images\view\view-elevation-down-32x32.png" />
+    <Content Include="Images\view\view-elevation-up-32x32.png" />
+    <Content Include="Images\view\view-fov-narrow-32x32.png" />
+    <Content Include="Images\view\view-fov-wide-32x32.png" />
+    <Content Include="Images\view\view-heading-left-32x32.png" />
+    <Content Include="Images\view\view-heading-right-32x32.png" />
+    <Content Include="Images\view\view-look-64x64.png" />
+    <Content Include="Images\view\view-pan-64x64.png" />
+    <Content Include="Images\view\view-pitch-down-32x32.png" />
+    <Content Include="Images\view\view-pitch-up-32x32.png" />
+    <Content Include="Images\view\view-zoom-in-32x32.png" />
+    <Content Include="Images\view\view-zoom-out-32x32.png" />
+    <Content Include="Images\white-dot.png" />
+    <Content Include="javaScript2.js" />
+    <Content Include="javaScript1.js" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\01_FirstjQueryPage_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\02_BasicFilters_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\03_HierCombo_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\04_AttrFilters_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\05_ChildVisCont_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\06_FormSelectors_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\07_traversing_finished.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\08_AutoPDFIcons_Finished.htm" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\images\smail.gif" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Final\images\small_pdf_icon.gif" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\jquery-1.9.1.js" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\jquery-1.9.1.min.js" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\01_FirstjQueryPage_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\02_BasicFilters_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\03_HierCombo_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\04_AttrFilters_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\05_ChildVisCont_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\06_FormSelectors_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\07_traversing_start.html" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\08_AutoPDFIcons_Start.htm" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\images\smail.gif" />
+    <Content Include="jQuery-Demos\01_RetrievingPageContent\Start\images\small_pdf_icon.gif" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\01_creating_finished.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\02_attributes_finished.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\03_inserting_finished.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\04_wrapping_finished.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\06_data_finished.html" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\07_AutoTOC_finished.html" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\images\Grass.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\images\Leaf.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\images\Spring.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Final\images\Water.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\jquery-1.9.1.js" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\jquery-1.9.1.min.js" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\01_creating_start.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\02_attributes_start.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\03_inserting_start.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\04_wrapping_start.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\05_css_sizing.htm" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\06_data_start.html" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\07_AutoTOC_start.html" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\images\Grass.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\images\Leaf.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\images\Spring.jpg" />
+    <Content Include="jQuery-Demos\02_ManipulatingPageContent\Start\images\Water.jpg" />
+    <Content Include="jQuery-Demos\03_Events\Final\01_binding_finished.htm" />
+    <Content Include="jQuery-Demos\03_Events\Final\02_eventobj_finished.htm" />
+    <Content Include="jQuery-Demos\03_Events\Final\03_miscevents_finished.htm" />
+    <Content Include="jQuery-Demos\03_Events\Final\tablestripe2_finished.html" />
+    <Content Include="jQuery-Demos\03_Events\Final\tablestripe_finished.html" />
+    <Content Include="jQuery-Demos\03_Events\jquery-1.9.1.js" />
+    <Content Include="jQuery-Demos\03_Events\jquery-1.9.1.min.js" />
+    <Content Include="jQuery-Demos\03_Events\Start\01_binding_start.htm" />
+    <Content Include="jQuery-Demos\03_Events\Start\02_eventobj_start.htm" />
+    <Content Include="jQuery-Demos\03_Events\Start\03_miscevents_start.htm" />
+    <Content Include="jQuery-Demos\03_Events\Start\04_tablestripe_start.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\Basic_Finished.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\DataTypes_finished.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\Globals_Finished.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\Helpers_Finished.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\testdata.txt" />
+    <Content Include="jQuery-Demos\04_Ajax\Final\testxmldata.xml" />
+    <Content Include="jQuery-Demos\04_Ajax\jquery-1.9.1.js" />
+    <Content Include="jQuery-Demos\04_Ajax\jquery-1.9.1.min.js" />
+    <Content Include="jQuery-Demos\04_Ajax\Start\01_Basic_Start.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Start\02_Helpers_start.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Start\03_DataTypes_start.html" />
+    <Content Include="jQuery-Demos\04_Ajax\Start\testdata.txt" />
+    <Content Include="jQuery-Demos\04_Ajax\Start\testxmldata.xml" />
+    <Content Include="jQuery-Demos\05_JQueryUI\01_jQuery-UI-Demo.html" />
+    <Content Include="jQuery-Demos\05_JQueryUI\02_Drag-and-Drop.html" />
+    <Content Include="jQuery-Demos\05_JQueryUI\images\TrashBin.png" />
+    <Content Include="jQuery-Demos\05_JQueryUI\scripts\jquery-1.5.js" />
+    <Content Include="jQuery-Demos\05_JQueryUI\scripts\jquery-ui-1.8.9.custom.min.js" />
+    <Content Include="jsIntro.html" />
+    <Content Include="jsIntro2.html" />
+    <Content Include="jsIntro3.html" />
+    <Content Include="jsIntro4.html" />
+    <Content Include="jsIntro5.html" />
+    <Content Include="js\imprint.js" />
+    <Content Include="Objects1.html" />
+    <Content Include="Objects2.html" />
+    <Content Include="Objects3.html" />
+    <Content Include="Objects4.html" />
+    <Content Include="Objects5.html" />
+    <Content Include="ooEs6.html" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="src\BasicWorldWindowController.js" />
+    <Content Include="src\cache\GpuResourceCache.js" />
+    <Content Include="src\cache\MemoryCache.js" />
+    <Content Include="src\cache\MemoryCacheListener.js" />
+    <Content Include="src\error\AbstractError.js" />
+    <Content Include="src\error\ArgumentError.js" />
+    <Content Include="src\error\NotYetImplementedError.js" />
+    <Content Include="src\error\UnsupportedOperationError.js" />
+    <Content Include="src\formats\aaigrid\AAIGridConstants.js" />
+    <Content Include="src\formats\aaigrid\AAIGridMetadata.js" />
+    <Content Include="src\formats\aaigrid\AAIGridReader.js" />
+    <Content Include="src\formats\collada\ColladaAsset.js" />
+    <Content Include="src\formats\collada\ColladaImage.js" />
+    <Content Include="src\formats\collada\ColladaLoader.js" />
+    <Content Include="src\formats\collada\ColladaMaterial.js" />
+    <Content Include="src\formats\collada\ColladaMesh.js" />
+    <Content Include="src\formats\collada\ColladaNode.js" />
+    <Content Include="src\formats\collada\ColladaScene.js" />
+    <Content Include="src\formats\collada\ColladaUtils.js" />
+    <Content Include="src\formats\geojson\GeoJSONConstants.js" />
+    <Content Include="src\formats\geojson\GeoJSONCRS.js" />
+    <Content Include="src\formats\geojson\GeoJSONExporter.js" />
+    <Content Include="src\formats\geojson\GeoJSONFeature.js" />
+    <Content Include="src\formats\geojson\GeoJSONFeatureCollection.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometry.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryCollection.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryLineString.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryMultiLineString.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryMultiPoint.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryMultiPolygon.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryPoint.js" />
+    <Content Include="src\formats\geojson\GeoJSONGeometryPolygon.js" />
+    <Content Include="src\formats\geojson\GeoJSONParser.js" />
+    <Content Include="src\formats\geotiff\GeoTiffConstants.js" />
+    <Content Include="src\formats\geotiff\GeoTiffKeyEntry.js" />
+    <Content Include="src\formats\geotiff\GeoTiffMetadata.js" />
+    <Content Include="src\formats\geotiff\GeoTiffReader.js" />
+    <Content Include="src\formats\geotiff\GeoTiffUtil.js" />
+    <Content Include="src\formats\geotiff\TiffConstants.js" />
+    <Content Include="src\formats\geotiff\TiffIFDEntry.js" />
+    <Content Include="src\formats\kml\controls\KmlControls.js" />
+    <Content Include="src\formats\kml\controls\KmlTreeVisibility.js" />
+    <Content Include="src\formats\kml\features\KmlContainer.js" />
+    <Content Include="src\formats\kml\features\KmlDocument.js" />
+    <Content Include="src\formats\kml\features\KmlFeature.js" />
+    <Content Include="src\formats\kml\features\KmlFolder.js" />
+    <Content Include="src\formats\kml\features\KmlGroundOverlay.js" />
+    <Content Include="src\formats\kml\features\KmlNetworkLink.js" />
+    <Content Include="src\formats\kml\features\KmlOverlay.js" />
+    <Content Include="src\formats\kml\features\KmlPhotoOverlay.js" />
+    <Content Include="src\formats\kml\features\KmlPlacemark.js" />
+    <Content Include="src\formats\kml\features\KmlScreenOverlay.js" />
+    <Content Include="src\formats\kml\features\KmlTour.js" />
+    <Content Include="src\formats\kml\geom\KmlGeometry.js" />
+    <Content Include="src\formats\kml\geom\KmlLinearRing.js" />
+    <Content Include="src\formats\kml\geom\KmlLineString.js" />
+    <Content Include="src\formats\kml\geom\KmlMultiGeometry.js" />
+    <Content Include="src\formats\kml\geom\KmlMultiTrack.js" />
+    <Content Include="src\formats\kml\geom\KmlPoint.js" />
+    <Content Include="src\formats\kml\geom\KmlPolygon.js" />
+    <Content Include="src\formats\kml\geom\KmlTrack.js" />
+    <Content Include="src\formats\kml\KmlAbstractView.js" />
+    <Content Include="src\formats\kml\KmlCamera.js" />
+    <Content Include="src\formats\kml\KmlElements.js" />
+    <Content Include="src\formats\kml\KmlFile.js" />
+    <Content Include="src\formats\kml\KmlFileCache.js" />
+    <Content Include="src\formats\kml\KmlIcon.js" />
+    <Content Include="src\formats\kml\KmlLatLonAltBox.js" />
+    <Content Include="src\formats\kml\KmlLatLonBox.js" />
+    <Content Include="src\formats\kml\KmlLatLonQuad.js" />
+    <Content Include="src\formats\kml\KmlLink.js" />
+    <Content Include="src\formats\kml\KmlLocation.js" />
+    <Content Include="src\formats\kml\KmlLod.js" />
+    <Content Include="src\formats\kml\KmlLookAt.js" />
+    <Content Include="src\formats\kml\KmlObject.js" />
+    <Content Include="src\formats\kml\KmlOrientation.js" />
+    <Content Include="src\formats\kml\KmlRegion.js" />
+    <Content Include="src\formats\kml\KmlTimePrimitive.js" />
+    <Content Include="src\formats\kml\KmlTimeSpan.js" />
+    <Content Include="src\formats\kml\KmlTimeStamp.js" />
+    <Content Include="src\formats\kml\KmzFile.js" />
+    <Content Include="src\formats\kml\styles\KmlBalloonStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlColorStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlIconStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlLabelStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlLineStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlListStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlPolyStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlStyle.js" />
+    <Content Include="src\formats\kml\styles\KmlStyleMap.js" />
+    <Content Include="src\formats\kml\styles\KmlStyleSelector.js" />
+    <Content Include="src\formats\kml\styles\KmlSubStyle.js" />
+    <Content Include="src\formats\kml\util\KmlAttribute.js" />
+    <Content Include="src\formats\kml\util\KmlChange.js" />
+    <Content Include="src\formats\kml\util\KmlCreate.js" />
+    <Content Include="src\formats\kml\util\KmlDelete.js" />
+    <Content Include="src\formats\kml\util\KmlElementsFactory.js" />
+    <Content Include="src\formats\kml\util\KmlElementsFactoryCached.js" />
+    <Content Include="src\formats\kml\util\KmlHrefResolver.js" />
+    <Content Include="src\formats\kml\util\KmlImagePyramid.js" />
+    <Content Include="src\formats\kml\util\KmlItemIcon.js" />
+    <Content Include="src\formats\kml\util\KmlNetworkLinkControl.js" />
+    <Content Include="src\formats\kml\util\KmlNodeTransformers.js" />
+    <Content Include="src\formats\kml\util\KmlPair.js" />
+    <Content Include="src\formats\kml\util\KmlRefreshListener.js" />
+    <Content Include="src\formats\kml\util\KmlRemoteFile.js" />
+    <Content Include="src\formats\kml\util\KmlScale.js" />
+    <Content Include="src\formats\kml\util\KmlSchema.js" />
+    <Content Include="src\formats\kml\util\KmlStyleResolver.js" />
+    <Content Include="src\formats\kml\util\KmlTreeKeyValueCache.js" />
+    <Content Include="src\formats\kml\util\KmlUpdate.js" />
+    <Content Include="src\formats\kml\util\KmlViewVolume.js" />
+    <Content Include="src\formats\shapefile\DBaseField.js" />
+    <Content Include="src\formats\shapefile\DBaseFile.js" />
+    <Content Include="src\formats\shapefile\DBaseRecord.js" />
+    <Content Include="src\formats\shapefile\PrjFile.js" />
+    <Content Include="src\formats\shapefile\Shapefile.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecord.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecordMultiPoint.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecordNull.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecordPoint.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecordPolygon.js" />
+    <Content Include="src\formats\shapefile\ShapefileRecordPolyline.js" />
+    <Content Include="src\formats\wkt\geom\WktGeometryCollection.js" />
+    <Content Include="src\formats\wkt\geom\WktLineString.js" />
+    <Content Include="src\formats\wkt\geom\WktMultiLineString.js" />
+    <Content Include="src\formats\wkt\geom\WktMultiPoint.js" />
+    <Content Include="src\formats\wkt\geom\WktMultiPolygon.js" />
+    <Content Include="src\formats\wkt\geom\WktObject.js" />
+    <Content Include="src\formats\wkt\geom\WktPoint.js" />
+    <Content Include="src\formats\wkt\geom\WktPolygon.js" />
+    <Content Include="src\formats\wkt\geom\WktTriangle.js" />
+    <Content Include="src\formats\wkt\Wkt.js" />
+    <Content Include="src\formats\wkt\WktElements.js" />
+    <Content Include="src\formats\wkt\WktExporter.js" />
+    <Content Include="src\formats\wkt\WktTokens.js" />
+    <Content Include="src\formats\wkt\WktType.js" />
+    <Content Include="src\geom\Angle.js" />
+    <Content Include="src\geom\BoundingBox.js" />
+    <Content Include="src\geom\Frustum.js" />
+    <Content Include="src\geom\Line.js" />
+    <Content Include="src\geom\Location.js" />
+    <Content Include="src\geom\Matrix.js" />
+    <Content Include="src\geom\Matrix3.js" />
+    <Content Include="src\geom\MeasuredLocation.js" />
+    <Content Include="src\geom\Plane.js" />
+    <Content Include="src\geom\Position.js" />
+    <Content Include="src\geom\Rectangle.js" />
+    <Content Include="src\geom\Sector.js" />
+    <Content Include="src\geom\TileMatrix.js" />
+    <Content Include="src\geom\TileMatrixSet.js" />
+    <Content Include="src\geom\Vec2.js" />
+    <Content Include="src\geom\Vec3.js" />
+    <Content Include="src\gesture\ClickRecognizer.js" />
+    <Content Include="src\gesture\DragRecognizer.js" />
+    <Content Include="src\gesture\GestureRecognizer.js" />
+    <Content Include="src\gesture\PanRecognizer.js" />
+    <Content Include="src\gesture\PinchRecognizer.js" />
+    <Content Include="src\gesture\RotationRecognizer.js" />
+    <Content Include="src\gesture\TapRecognizer.js" />
+    <Content Include="src\gesture\TiltRecognizer.js" />
+    <Content Include="src\gesture\Touch.js" />
+    <Content Include="src\globe\AsterV2ElevationCoverage.js" />
+    <Content Include="src\globe\EarthElevationModel.js" />
+    <Content Include="src\globe\EarthRestElevationCoverage.js" />
+    <Content Include="src\globe\ElevationCoverage.js" />
+    <Content Include="src\globe\ElevationImage.js" />
+    <Content Include="src\globe\ElevationModel.js" />
+    <Content Include="src\globe\GebcoElevationCoverage.js" />
+    <Content Include="src\globe\Globe.js" />
+    <Content Include="src\globe\Globe2D.js" />
+    <Content Include="src\globe\Terrain.js" />
+    <Content Include="src\globe\TerrainTile.js" />
+    <Content Include="src\globe\TerrainTileList.js" />
+    <Content Include="src\globe\Tessellator.js" />
+    <Content Include="src\globe\TiledElevationCoverage.js" />
+    <Content Include="src\globe\UsgsNedElevationCoverage.js" />
+    <Content Include="src\globe\UsgsNedHiElevationCoverage.js" />
+    <Content Include="src\globe\WcsEarthElevationCoverage.js" />
+    <Content Include="src\layer\AtmosphereLayer.js" />
+    <Content Include="src\layer\BingAerialLayer.js" />
+    <Content Include="src\layer\BingAerialWithLabelsLayer.js" />
+    <Content Include="src\layer\BingRoadsLayer.js" />
+    <Content Include="src\layer\BingTiledImageLayer.js" />
+    <Content Include="src\layer\BingWMSLayer.js" />
+    <Content Include="src\layer\BMNGLandsatLayer.js" />
+    <Content Include="src\layer\BMNGLayer.js" />
+    <Content Include="src\layer\BMNGOneImageLayer.js" />
+    <Content Include="src\layer\BMNGRestLayer.js" />
+    <Content Include="src\layer\CompassLayer.js" />
+    <Content Include="src\layer\CoordinatesDisplayLayer.js" />
+    <Content Include="src\layer\DigitalGlobeTiledImageLayer.js" />
+    <Content Include="src\layer\FrameStatisticsLayer.js" />
+    <Content Include="src\layer\heatmap\HeatMapColoredTile.js" />
+    <Content Include="src\layer\heatmap\HeatMapIntervalType.js" />
+    <Content Include="src\layer\heatmap\HeatMapLayer.js" />
+    <Content Include="src\layer\heatmap\HeatMapTile.js" />
+    <Content Include="src\layer\LandsatRestLayer.js" />
+    <Content Include="src\layer\Layer.js" />
+    <Content Include="src\layer\MercatorTiledImageLayer.js" />
+    <Content Include="src\layer\OpenStreetMapImageLayer.js" />
+    <Content Include="src\layer\RenderableLayer.js" />
+    <Content Include="src\layer\RestTiledImageLayer.js" />
+    <Content Include="src\layer\ShowTessellationLayer.js" />
+    <Content Include="src\layer\StarFieldLayer.js" />
+    <Content Include="src\layer\TectonicPlatesLayer.js" />
+    <Content Include="src\layer\TiledImageLayer.js" />
+    <Content Include="src\layer\ViewControlsLayer.js" />
+    <Content Include="src\layer\WmsLayer.js" />
+    <Content Include="src\layer\WmsTimeDimensionedLayer.js" />
+    <Content Include="src\layer\WmtsLayer.js" />
+    <Content Include="src\layer\WmtsLayerTile.js" />
+    <Content Include="src\navigate\LookAtNavigator.js" />
+    <Content Include="src\navigate\Navigator.js" />
+    <Content Include="src\ogc\gml\GmlBoundedBy.js" />
+    <Content Include="src\ogc\gml\GmlDomainSet.js" />
+    <Content Include="src\ogc\gml\GmlRectifiedGrid.js" />
+    <Content Include="src\ogc\ows\OwsBoundingBox.js" />
+    <Content Include="src\ogc\ows\OwsConstraint.js" />
+    <Content Include="src\ogc\ows\OwsDatasetSummary.js" />
+    <Content Include="src\ogc\ows\OwsDescription.js" />
+    <Content Include="src\ogc\ows\OwsKeywords.js" />
+    <Content Include="src\ogc\ows\OwsLanguageString.js" />
+    <Content Include="src\ogc\ows\OwsOperationsMetadata.js" />
+    <Content Include="src\ogc\ows\OwsServiceIdentification.js" />
+    <Content Include="src\ogc\ows\OwsServiceProvider.js" />
+    <Content Include="src\ogc\wcs\WcsCapabilities.js" />
+    <Content Include="src\ogc\wcs\WcsCoverage.js" />
+    <Content Include="src\ogc\wcs\WcsCoverageDescriptions.js" />
+    <Content Include="src\ogc\wcs\WcsUrlBuilder.js" />
+    <Content Include="src\ogc\wcs\WebCoverageService.js" />
+    <Content Include="src\ogc\WfsCapabilities.js" />
+    <Content Include="src\ogc\wms\WmsCapabilities.js" />
+    <Content Include="src\ogc\wms\WmsLayerCapabilities.js" />
+    <Content Include="src\ogc\wmts\WmtsCapabilities.js" />
+    <Content Include="src\ogc\wmts\WmtsLayerCapabilities.js" />
+    <Content Include="src\pick\PickedObject.js" />
+    <Content Include="src\pick\PickedObjectList.js" />
+    <Content Include="src\projections\GeographicProjection.js" />
+    <Content Include="src\projections\ProjectionEquirectangular.js" />
+    <Content Include="src\projections\ProjectionGnomonic.js" />
+    <Content Include="src\projections\ProjectionMercator.js" />
+    <Content Include="src\projections\ProjectionPolarEquidistant.js" />
+    <Content Include="src\projections\ProjectionUPS.js" />
+    <Content Include="src\projections\ProjectionWgs84.js" />
+    <Content Include="src\render\DrawContext.js" />
+    <Content Include="src\render\FramebufferTexture.js" />
+    <Content Include="src\render\FramebufferTile.js" />
+    <Content Include="src\render\FramebufferTileController.js" />
+    <Content Include="src\render\ImageTile.js" />
+    <Content Include="src\render\OrderedRenderable.js" />
+    <Content Include="src\render\Renderable.js" />
+    <Content Include="src\render\ScreenCreditController.js" />
+    <Content Include="src\render\SurfaceRenderable.js" />
+    <Content Include="src\render\SurfaceTile.js" />
+    <Content Include="src\render\SurfaceTileRenderer.js" />
+    <Content Include="src\render\TextRenderer.js" />
+    <Content Include="src\render\Texture.js" />
+    <Content Include="src\render\TextureTile.js" />
+    <Content Include="src\shaders\AtmosphereProgram.js" />
+    <Content Include="src\shaders\BasicProgram.js" />
+    <Content Include="src\shaders\BasicTextureProgram.js" />
+    <Content Include="src\shaders\GpuProgram.js" />
+    <Content Include="src\shaders\GpuShader.js" />
+    <Content Include="src\shaders\GroundProgram.js" />
+    <Content Include="src\shaders\SkyProgram.js" />
+    <Content Include="src\shaders\StarFieldProgram.js" />
+    <Content Include="src\shaders\SurfaceTileRendererProgram.js" />
+    <Content Include="src\shapes\AbstractMesh.js" />
+    <Content Include="src\shapes\AbstractShape.js" />
+    <Content Include="src\shapes\Annotation.js" />
+    <Content Include="src\shapes\AnnotationAttributes.js" />
+    <Content Include="src\shapes\Compass.js" />
+    <Content Include="src\shapes\GeographicMesh.js" />
+    <Content Include="src\shapes\GeographicText.js" />
+    <Content Include="src\shapes\Path.js" />
+    <Content Include="src\shapes\Placemark.js" />
+    <Content Include="src\shapes\PlacemarkAttributes.js" />
+    <Content Include="src\shapes\Polygon.js" />
+    <Content Include="src\shapes\ScreenImage.js" />
+    <Content Include="src\shapes\ScreenText.js" />
+    <Content Include="src\shapes\ShapeAttributes.js" />
+    <Content Include="src\shapes\SurfaceCircle.js" />
+    <Content Include="src\shapes\SurfaceEllipse.js" />
+    <Content Include="src\shapes\SurfaceImage.js" />
+    <Content Include="src\shapes\SurfacePolygon.js" />
+    <Content Include="src\shapes\SurfacePolyline.js" />
+    <Content Include="src\shapes\SurfaceRectangle.js" />
+    <Content Include="src\shapes\SurfaceSector.js" />
+    <Content Include="src\shapes\SurfaceShape.js" />
+    <Content Include="src\shapes\SurfaceShapeTile.js" />
+    <Content Include="src\shapes\SurfaceShapeTileBuilder.js" />
+    <Content Include="src\shapes\Text.js" />
+    <Content Include="src\shapes\TextAttributes.js" />
+    <Content Include="src\shapes\TriangleMesh.js" />
+    <Content Include="src\util\AbsentResourceList.js" />
+    <Content Include="src\util\BasicTimeSequence.js" />
+    <Content Include="src\util\BingImageryUrlBuilder.js" />
+    <Content Include="src\util\ByteBuffer.js" />
+    <Content Include="src\util\Color.js" />
+    <Content Include="src\util\Date.js" />
+    <Content Include="src\util\es6-promise.js" />
+    <Content Include="src\util\Font.js" />
+    <Content Include="src\util\FrameStatistics.js" />
+    <Content Include="src\util\GoToAnimator.js" />
+    <Content Include="src\util\HashMap.js" />
+    <Content Include="src\util\HighlightController.js" />
+    <Content Include="src\util\ImageSource.js" />
+    <Content Include="src\util\Insets.js" />
+    <Content Include="src\util\jszip.js" />
+    <Content Include="src\util\Level.js" />
+    <Content Include="src\util\LevelRowColumnUrlBuilder.js" />
+    <Content Include="src\util\LevelSet.js" />
+    <Content Include="src\util\libtess.js" />
+    <Content Include="src\util\Logger.js" />
+    <Content Include="src\util\measure\AreaMeasurer.js" />
+    <Content Include="src\util\measure\LengthMeasurer.js" />
+    <Content Include="src\util\measure\MeasurerUtils.js" />
+    <Content Include="src\util\NominatimGeocoder.js" />
+    <Content Include="src\util\Offset.js" />
+    <Content Include="src\util\PeriodicTimeSequence.js" />
+    <Content Include="src\util\PolygonSplitter.js" />
+    <Content Include="src\util\proj4-src.js" />
+    <Content Include="src\util\Promise.js" />
+    <Content Include="src\util\SunPosition.js" />
+    <Content Include="src\util\Tile.js" />
+    <Content Include="src\util\TileFactory.js" />
+    <Content Include="src\util\UrlBuilder.js" />
+    <Content Include="src\util\WcsTileUrlBuilder.js" />
+    <Content Include="src\util\WmsUrlBuilder.js" />
+    <Content Include="src\util\WWMath.js" />
+    <Content Include="src\util\WWMessage.js" />
+    <Content Include="src\util\WWUtil.js" />
+    <Content Include="src\util\XmlDocument.js" />
+    <Content Include="src\WorldWind.js" />
+    <Content Include="src\WorldWindow.js" />
+    <Content Include="src\WorldWindowController.js" />
+    <Content Include="worldWind.html" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cerulean.bootstrap.css" />
+    <Content Include="Content\cyborg.bootstrap.css" />
+    <Content Include="Content\minty.bootstrap.css" />
+    <Content Include="cssSample.html" />
+    <Content Include="cssSelectors.html" />
+    <Content Include="css\common.css" />
+    <Content Include="css\special.css" />
+    <Content Include="html5Controls.html" />
+    <Content Include="Images\heer.jpg" />
+    <Content Include="Images\image.jpg" />
+    <Content Include="charts.html" />
+    <Content Include="imprint.html" />
+    <Content Include="index.html" />
+    <Content Include="index_old.html" />
+    <Content Include="menuOnly.html" />
+    <Content Include="menuInclude.html" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="WorldWind\BasicExample.js" />
+    <Content Include="WorldWind\LayerManager.js" />
+    <Content Include="WorldWind\WorldWindShim.js" />
+    <Content Include="Images\stars.json" />
+    <Content Include="Images\TectonicPlates.json" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="data\sessions.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataService.svc.cs">
+      <DependentUpon>DataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="src\formats\kml\README.MD" />
+    <Content Include="src\formats\wkt\README.MD" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51082</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51082/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

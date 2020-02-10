@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        //Object Literals
+        var empty = {}; // An object with no properties
+        var point = { x: 0, y: 0 }; // Two properties
+        var point2 = { x: point.x, y: point.y + 1 }; // More complex values
+
+        // JavaScript's most important data type is the object.
+        // An object is a collection of name/value pairs, or a string to value map.
+        var book = { // Objects are enclosed in curly braces.
+            "main title": "JavaScript", // Property names include spaces,
+            'sub-title': "The Definitive Guide", // and hyphens, so use string literals
+            "for": "all audiences", // for is a reserved word, so quote
+            topic: "JavaScript", // The property "topic" has value "JavaScript".
+            fat: true, // The property "fat" has value true.
+            author: { // The value of this property is
+                firstname: "", // itself an object. Note that
+                surname: "" // these property names are unquoted.
+            }
+        }; // The curly brace marks the end of the object.
+
+        // Access the properties of an object with . or []:
+        var topic = book.topic; // => "JavaScript"
+        var fat = book["fat"]; // => true: another way to access property values.
+        book.author.surname = "Flanagan"; // Create new properties by assignment.
+        book.contents = {}; // {} is an empty object with no properties.
+
+        //Deleting Properties
+        delete book.author; // The book object now has no author property.
+        delete book["main title"]; // Now it doesn't have "main title", either.
+
+        //Testing Properties
+        var o = { x: 1 };
+        var isin1 = "x" in o; // true: o has an own property "x"
+        var isin2 = "y" in o; // false: o doesn't have a property "y"
+        var isin3 = "toString" in o; // true: o inherits a toString property
+
+        var isin4 = "author" in book;
+        var isin5 = "fat" in book;
+
+        var own1 = o.hasOwnProperty("x"); // true: o has an own property x
+        var own2 = o.hasOwnProperty("y"); // false: o doesn't have a property y
+        var own3 = o.hasOwnProperty("toString"); // false: toString is an inherited property
+
+        //Property Access Errors
+        var sub1 = book.subtitle; // => undefined: property doesn't exist
+        // Raises a TypeError exception. undefined doesn't have a length property
+        //var len = book.subtitle.length;
+
+        // A verbose and explicit technique
+        var len = undefined;
+        if (book) {
+            if (book.subtitle) len = book.subtitle.length;
+        }
+        // A concise and idiomatic alternative to get subtitle length or undefined
+        var len = book && book.subtitle && book.subtitle.length;
+
+
+
+
+        //Creating Objects with new
+        var o = new Object(); // Create an empty object: same as {}.
+        var a = new Array(); // Create an empty array: same as [].
+        var d = new Date(); // Create a Date object representing the current time
+        var r = new RegExp("js"); // Create a RegExp object for pattern matching.
+
+        //Object.create()
+        var o1 = Object.create({ x: 1, y: 2 }); // o1 inherits properties x and y.
+        var o2 = Object.create(null); // o2 inherits no props or methods.
+        var o3 = Object.create(Object.prototype); // o3 is like {} or new Object().
+
+        //Creating a new object that inherits from a prototype
+        // inherit() returns a newly created object that inherits properties from the
+        // prototype object p. It uses the ECMAScript 5 function Object.create() if
+        // it is defined, and otherwise falls back to an older technique.
+        function inherit(p) {
+            if (p == null) throw TypeError(); // p must be a non-null object
+            if (Object.create) // If Object.create() is defined...
+                return Object.create(p); // then just use it.
+            var t = typeof p; // Otherwise do some more type checking
+            if (t !== "object" && t !== "function") throw TypeError();
+            function f() { }; // Define a dummy constructor function.
+            f.prototype = p; // Set its prototype property to p.
+            return new f(); // Use f() to create an "heir" of p.
+        }
+
+        // guard against unintended (but nonmalicious) modification of an object
+        // by a library function that you don’t have control over
+        //var o = { x: "don't change this value" };
+        //library_function(inherit(o)); // Guard against accidental modifications of o
+
+
+
+
+        //Inheritance
+        var o = {}; // o inherits object methods from Object.prototype
+        o.x = 1; // and has an own property x.
+        var p = inherit(o); // p inherits properties from o and Object.prototype
+        p.y = 2; // and has an own property y.
+        var q = inherit(p); // q inherits properties from p, o, and Object.prototype
+        q.z = 3; // and has an own property z.
+        var s = q.toString(); // toString is inherited from Object.prototype
+        var res1 = q.x + q.y; // => 3: x and y are inherited from o and p
+        q.x = 99;
+        var res2 = o.x; // => 1
+
+        var unitcircle = { r: 1 }; // An object to inherit from
+        var c = inherit(unitcircle); // c inherits the property r
+        c.x = 1; c.y = 1; // c defines two properties of its own
+        c.r = 2; // c overrides its inherited property
+        var res2 = unitcircle.r; // => 1: the prototype object is not affected
+
+        //Enumerating Properties
+        var o = { x: 1, y: 2, z: 3 }; // Three enumerable own properties
+        //Built-in  methods  that  objects  inherit  are  not enumerable,
+        o.propertyIsEnumerable("toString"); // => false: not enumerable
+        for (p in o) // Loop through the properties
+            console.log(p); // Prints x, y, and z, but not toString
+
+        for (p in o) {
+            if (!o.hasOwnProperty(p)) continue; // Skip inherited properties
+            console.log(p);
+        }
+
+        for (p in o) {
+            if (typeof o[p] === "function") continue; // Skip methods
+            console.log(p);
+        }
+
+        //See Object utility functions that enumerate properties...
+        
+        //Property Getters and Setters
+        var p = {
+            // x and y are regular read-write data properties.
+            x: 1.0,
+            y: 1.0,
+            // r is a read-write accessor property with getter and setter.
+            // Don't forget to put a comma after accessor methods.
+            get r() { return Math.sqrt(this.x*this.x + this.y*this.y); },
+            set r(newvalue) {
+                var oldvalue = Math.sqrt(this.x*this.x + this.y*this.y);
+                var ratio = newvalue/oldvalue;
+                this.x *= ratio;
+                this.y *= ratio;
+            },
+            // theta is a read-only accessor property with getter only.
+            get theta() { return Math.atan2(this.y, this.x); }
+        };
+        
+        var q = inherit(p); // Create a new object that inherits getters and setters
+        q.x = 0, q.y = 0; // Create q's own data properties
+        console.log(q.r); // And use the inherited accessor properties
+        console.log(q.theta);
+
+        //The prototype Attribute
+        var p = { x: 1 }; // Define a prototype object.
+        var o = Object.create(p); // Create an object with that prototype.
+        var prot1 = p.isPrototypeOf(o); // => true: o inherits from p
+        var prot2 = Object.prototype.isPrototypeOf(o); // => true: p inherits from Object.prototype
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        class Car {
+
+            constructor(name, vendor, price) {
+                this._name = name;
+                this._vendor = vendor;
+                this._price = price;
+            }
+
+            set name(name) {
+                this._name = name;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            raisePrice() {
+                this._price += 500;
+            }
+
+            static create(type, Vendor) {
+                return new Car(type, Vendor);
+            }
+
+            toString () { // 'function' keyword is omitted here
+                 return `${this._name} ${this._vendor} ${this._price}`;
+            }
+
+        }
+
+        class Truck extends Car {
+            constructor(name, vendor, price, axles) {
+                super(name, vendor, price);
+                this._axles = axles;
+            }
+
+            toString () { // 'function' keyword is omitted here
+                 return super.toString() + ' ' + this._axles;
+            }
+
+        }
+
+        let fromStatic = Car.create('A5', 'Audi');
+
+        let car = new Car('Lupo', 'VW', 500);
+
+        changeCar(car);
+
+        console.log('Car: ' + car);
+        console.log('\t' + car._name);
+        console.log('\t' + car._vendor);
+        console.log('\t' + car._price);
+
+
+
+        let truck = new Truck('4711', 'MAN', 750, 4);
+        console.log('Truck: ' + truck);
+
+
+        let vehicles = [car, truck];
+
+        vehicles.forEach( function(vehicle, i)  {
+            changePrice(vehicle);
+        });
+
+        console.log('Price raised:');
+        vehicles.forEach( (vehicle, i) => {
+            console.log(vehicle.toString());
+        });
+
+
+
+
+        function changeCar(car) {
+            //car = new Car();
+            car._name = 'Passat';
+        };
+
+        function changePrice(vehicle) {
+            if(vehicle instanceof Truck)
+                vehicle._price += 99;
+            else
+                vehicle._price += 1;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

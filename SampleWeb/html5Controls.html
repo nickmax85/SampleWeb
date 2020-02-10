@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+        li input {
+            width: 200px;
+        }
+
+        li span {
+            display: block;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
+
+    <script>
+
+        var counter = 0;
+        function init() {
+            //alert('page loaded');
+            setInterval(function () {
+                counter++;
+                document.getElementById('firstName').value = counter;
+            }, 1000);
+            //setTimeout()
+        }
+
+        function checkForm() {
+            var input = document.getElementById('firstName').value;
+            document.getElementById('firstName').value = 'Hamböck';
+            alert('trying to submit: ' + input);
+            return true; //false
+        }
+
+        function moveOn() {
+            window.location.href = "index.html";
+        }
+
+    </script>
+
+</head>
+<body onload="init();">
+
+    Sample <mark>HTML5</mark> controls:
+    <button onclick="moveOn();">Click Me</button>
+
+
+    <form onsubmit="return checkForm();">
+        <fieldset>
+            <legend>Controls</legend>
+
+            <ul>
+                <li>
+                    <span> <label for="firstName">text (required, placeholder):</label> </span>
+                    <input type="text" name="firstName" id="firstName" autofocus required placeholder="...your first name"
+                           value="Berndt" />
+                </li>
+                <li>
+                    <span>text + pattern:</span>
+                    <input type="text" pattern="[0-9]{4}[a-zA-Z]{2}" title="4 nums, 2 chars" />
+                </li>
+                <li>
+                    <span> <label for="email" accesskey="m">e<u>m</u>ail:</label> </span>
+                    <input type="email" name="email" id="email" />
+                </li>
+                <li>
+                    <span>password:</span>
+                    <input type="password" />
+                </li>
+
+                <li>
+                    <span id="rangeInfo">range (25):</span>
+                    <input type="range" min="0" max="100" value="25" step="5"
+                           oninput="showVal(this.value);" onchange="showVal(this.value);" />
+                    <script>
+                        function showVal(newVal) {
+                            document.getElementById('rangeInfo').innerHTML = 'range (' + newVal + '):';
+                        }
+                    </script>
+
+                </li>
+
+                <li>
+                    <span>url:</span>
+                    <input type="url" pattern="https?://.+" title="only http, or https" />
+                </li>
+
+                <li>
+                    <span>number:</span>
+                    <input type="number" min="0" max="100" />
+                </li>
+
+                <li>
+                    <span>list:</span>
+                    <input type="text" list="myList" />
+                    <datalist id="myList">
+                        <option label="Flash" value="Flash"></option>
+                        <option label="Silverlight" value="Silverlight"></option>
+                        <option label="JavaScript" value="JavaScript"></option>
+                    </datalist>
+                </li>
+
+                <li>
+                    <span>old_list:</span>
+                    <select>
+                        <option label="Flash" value="Flash"></option>
+                        <option label="Silverlight" value="Silverlight"></option>
+                        <option label="JavaScript" value="JavaScript"></option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>color:</span>
+                    <input type="color" />
+                </li>
+
+                <li>
+                    <span>date:</span>
+                    <input type="date" />
+                </li>
+
+                <li>
+                    <span>time:</span>
+                    <input type="time" />
+                </li>
+
+                <li>
+                    <span>datetime:</span>
+                    <input type="datetime" />
+                </li>
+
+                <li>
+                    <span>datetime-local:</span>
+                    <input type="datetime-local" />
+                </li>
+
+                <li>
+                    <span>month:</span>
+                    <input type="month" />
+                </li>
+
+                <li>
+                    <span>week:</span>
+                    <input type="week" />
+                </li>
+
+                <li>
+                    <span>file:</span>
+                    <input type="file" />
+                </li>
+
+                <li>
+                    <span>search:</span>
+                    <input type="search" />
+                </li>
+
+                <li>
+                    <span>tel:</span>
+                    <input type="tel" />
+                </li>
+
+                <li>
+                    <span>optgroup:</span>
+                    <select id="carManufacturer" name="carManufacturer">
+                        <optgroup label="European">
+                            <option value="volvo">Volvo</option>
+                            <option value="audi">Audi</option>
+                        </optgroup>
+                        <optgroup label="American">
+                            <option value="chrysler">
+                                Chrysler
+                            </option>
+                            <option value="ford">
+                                Ford
+                            </option>
+                        </optgroup>
+                    </select>
+                </li>
+
+
+            </ul>
+        </fieldset>
+
+        <input type="submit" value="Submit" />
+
+    </form>
+
+</body>
+</html>

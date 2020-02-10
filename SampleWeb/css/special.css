@@ -1,0 +1,16 @@
+﻿p {
+    color: yellow;
+}
+
+
+.employee {
+    font-size: 3em;
+}
+
+    .employee.active {
+        background-color: green;
+    }
+
+    .employee.absent {
+        background-color: red;
+    }

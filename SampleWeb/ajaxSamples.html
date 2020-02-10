@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="Scripts/jquery-3.4.1.js"></script>
+
+</head>
+<body>
+    <h1>Ajax Samples</h1>
+
+    <ul id="sessions">
+    </ul>
+
+    <script>
+
+        //oldStyle();
+        //getJQuery1();
+        getJQuery2();
+
+        function getJQuery2() {
+            let url = '/DataService.svc/Sessions';
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.ajax({
+                url: url,
+                type: 'GET',
+                //crossDomain: true,
+                //dataType: 'jsonp',
+                user: 'xx',
+                password:'yy'
+            })
+                .done(function (ddata) {
+                    let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+        function getJQuery1() {
+            let url = '/DataService.svc/Sessions';
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.getJSON(url)
+                .done(function (ddata) {
+                    let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+        function oldStyle() {
+
+            let url = 'data/sessions.json';
+            let request = new XMLHttpRequest();
+
+            let user = 'Berndt';
+            let pass = '12345678'
+            //request.setRequestHeader("Authorization", "Basic " + btoa(user + ":" + pass));
+
+            request.open('GET', url);
+
+            request.onreadystatechange = function () {
+                //0: request not initialized
+                //1: server connection established
+                //2: request received
+                //3: processing request
+                //4: request finished and response is ready
+                if (request.readyState == 4) {
+
+                    if (request.status == 200) {
+                        //alert('ok');
+                        //alert(request.responseText);
+                        let data = JSON.parse(request.responseText);
+                        //alert(data.length);
+                        showData(data);
+
+                    } else {
+                        alert("ERROR: " + request.status + ' ' + request.statusText);
+                    }
+                }
+            };
+            request.send();
+        }
+
+        function showData(data) {
+            //<li>Registration (A)</li>
+
+            let container = $('#sessions');
+            data.forEach(function (item, i) {
+                let li = $('<li>').html(item.title + ' (' + item.room + ')');
+                container.append(li);
+            });
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+
+</head>
+<body class="container">
+    <h1>WebAPI Ajax Samples</h1>
+
+    <input type="text" id="filter" /><button id="roomButton" class="btn btn-success">Room</button>
+
+
+    <ul id="sessions" class="list-group">
+    </ul>
+
+    <button class="btn btn-info" id="addButton">Add</button>
+    <button class="btn btn-warning" id="refreshButton">Refresh</button>
+    <button class="btn btn-danger" id="deleteButton">Delete</button>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#refreshButton').click(function () {
+
+                getJQuery2();
+
+            });
+
+            $('#roomButton').click(function () {
+
+                let filter = $('#filter').val().toUpperCase();
+                getJQuery3(filter);
+
+            });
+
+            $('#addButton').click(function () {
+
+                postJQuery1();
+
+            });
+
+            $('#deleteButton').click(function () {
+
+                let checked = $('#sessions :checked');
+                let ids = [];
+                checked.each(function (i,item) {
+
+                    let id = $(item).attr('id');
+                    //ids.push(id);
+                    deleteJQuery1(id);
+                });
+
+                //alert(JSON.stringify(ids));
+            });
+
+
+        });
+
+
+        function deleteJQuery1(id) {
+            let url = '/api/trainings/' + id;
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                //crossDomain: true,
+                //dataType: 'jsonp',
+                user: 'xx',
+                password: 'yy'
+            })
+                .done(function (data) {
+                    //let data = JSON.parse(ddata.d);
+
+                    showData(data);
+
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });            
+        }
+
+        function postJQuery1() {
+
+            let url = '/api/trainings';
+
+            let training = { Title: 'NEW', Room: 'C' };
+
+            $.post(url, training)
+                .done(function (data) {
+                    //let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+
+        //oldStyle();
+        //getJQuery1();
+        getJQuery2();
+
+        function getJQuery3(filter) {
+            let url = '/api/trainings/' + filter;
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.ajax({
+                url: url,
+                type: 'GET',
+                //crossDomain: true,
+                //dataType: 'jsonp',
+                user: 'xx',
+                password: 'yy'
+            })
+                .done(function (data) {
+                    //let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+
+        function getJQuery2() {
+            let url = '/api/trainings';
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.ajax({
+                url: url,
+                type: 'GET',
+                //crossDomain: true,
+                //dataType: 'jsonp',
+                user: 'xx',
+                password: 'yy'
+            })
+                .done(function (data) {
+                    //let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+        function getJQuery1() {
+            let url = '/api/trainings';
+            //$.getJSON(url, { user: "name", password: "123456" })
+            $.getJSON(url)
+                .done(function (data) {
+                    //let data = JSON.parse(ddata.d);
+                    showData(data);
+                    //alert(ddata);
+                    //debugger;
+
+                })
+                .fail(function (error) {
+                    alert("ERROR: " + error.status + ' ' + error.statusText);
+                });
+
+        }
+
+
+        function oldStyle() {
+
+            let url = '/api/trainings';
+            let request = new XMLHttpRequest();
+
+            let user = 'Berndt';
+            let pass = '12345678'
+            //request.setRequestHeader("Authorization", "Basic " + btoa(user + ":" + pass));
+
+            request.open('GET', url);
+
+            request.onreadystatechange = function () {
+                //0: request not initialized
+                //1: server connection established
+                //2: request received
+                //3: processing request
+                //4: request finished and response is ready
+                if (request.readyState == 4) {
+
+                    if (request.status == 200) {
+                        //alert('ok');
+                        //alert(request.responseText);
+                        let data = JSON.parse(request.responseText);
+                        //alert(data.length);
+                        showData(data);
+
+                    } else {
+                        alert("ERROR: " + request.status + ' ' + request.statusText);
+                    }
+                }
+            };
+            request.send();
+        }
+
+        function showData(data) {
+            //<li>Registration (A)</li>
+
+
+            let container = $('#sessions');
+            container.empty();
+
+            if (!Array.isArray(data))
+                return;
+
+            data.forEach(function (item, i) {
+
+                //<input type="checkbox" id="1" />abc
+                let li = $('<li class="list-group-item">');
+                let label = $('<label>').html(item.Id + '. ' + item.Title + ' (' + item.Room + ')');
+                let cbx = $('<input type="checkbox">').attr('id', item.Id);
+                label.prepend(cbx);
+                li.append(label);
+                container.append(li);
+            });
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>

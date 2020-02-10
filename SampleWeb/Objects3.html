@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        //let myAlert = alert;
+        //myAlert('Hello world');
+
+        ////1.0 Using a function
+        //function Apple(type) {
+        //    this.type = type;
+        //    this.color = "red";
+        //    this.getInfo = getAppleInfo;
+        //}
+
+        //// problem...polute global namespace
+        //function getAppleInfo() {
+        //    return this.color + ' ' + this.type + ' apple';
+        //}
+
+        //1.1. Methods defined internally
+        //function Apple(type) {
+        //    this.type = type;
+        //    this.color = "red";
+        //    this.getInfo = function () {
+        //        return this.color + ' ' + this.type + ' apple';
+        //    };
+        //}
+
+        //window.color = 'PINK';
+        //window.type = 'Auto';
+        //alert(getAppleInfo());
+
+
+
+        //1.2. Methods added to the prototype
+        function Apple(type) {
+            this.type = type;
+            this.color = "red";
+        }
+
+        Apple.prototype.getInfo = function () {
+            return this.color + ' ' + this.type + ' apple';
+        };
+
+
+        let apple1 = new Apple('Gol. Del.');
+        alert(apple1.getInfo());
+        let apple2 = new Apple('Williams');
+        alert(apple2.getInfo());
+
+
+
+
+
+
+
+
+
+
+
+        ////2. Using object literals
+        //var o = {}; //Objects
+        //var o = new Object();
+        
+        //var a = []; //Arrays
+        //var a = new Array();
+
+        //var apple = {
+        //    type: "macintosh",
+        //    color: "red",
+        //    getInfo: function () {
+        //        return this.color + ' ' + this.type + ' apple';
+        //    }
+        //}
+
+        ////No instantiation needed...just use it...
+        ////apple.color = "reddish";
+        ////alert(apple.getInfo());
+
+        ////3. Singleton using a function
+        //var apple = new function () {
+        //    this.type = "macintosh";
+        //    this.color = "red";
+        //    this.getInfo = function () {
+        //        return this.color + ' ' + this.type + ' apple';
+        //    };
+        //}
+
+        ////apple.color = "reddish";
+        ////alert(apple.getInfo());
+
+    </script>
+
+
+
+</body>
+</html>

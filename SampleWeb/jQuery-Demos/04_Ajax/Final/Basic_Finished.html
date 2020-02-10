@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using the Ajax Function</title>
+    <style>
+    #content {
+    	padding: 5pt;
+    	border: 2px dashed lightgray;
+    }
+    </style>
+    <script type="text/javascript" src="../jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+      $("document").ready(function() {
+        getData();
+      });
+      
+      function getData() {
+        $.ajax({
+          // the URL for the request
+          url: "testdata.txt",
+
+          // whether this is a POST or GET request
+          type: "GET",
+         
+          // the type of data we expect back
+          dataType : "text",
+          
+          // function to call for success
+          success: successFn,
+
+          // function to call on an error
+          error: errorFn,
+                           
+          // code to run regardless of success or failure
+          complete: function( xhr, status ) {
+            console.log("The request is complete!");
+          }
+        });
+      }
+      
+      function successFn(result) {
+        console.log("Setting result");
+      	$("#content").append(result);
+      }
+      function errorFn(xhr, status, strErr) {
+        console.log("There was an error!");
+      	$("#content").append(result);
+      }
+  </script>
+</head>
+<body>
+<h1>Using the basic Ajax function</h1>
+<p id="content"></p>
+</body>
+</html>

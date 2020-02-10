@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Working With Different Data Types</title>
+    <style>
+    #content {
+    	padding: 5pt;
+    	border: 2px dashed lightgray;
+    }
+    </style>
+    <script type="text/javascript" src="../jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+      $("document").ready(function() {
+      });
+      
+	  function getJSONData() {
+		var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      }
+      
+      function getXMLData() {
+      }
+      
+      function successFn(result) {
+      }
+      
+      function errorFn(xhr, status, strErr) {
+        alert(strErr);
+      }
+  </script>
+</head>
+<body>
+<h1>Working With Different Data Types</h1>
+<div id="content"></div>
+</body>
+</html>

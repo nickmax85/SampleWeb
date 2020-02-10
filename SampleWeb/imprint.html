@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!--<link href="Content/bootstrap.css" rel="stylesheet" />-->
+    <!--<link href="Content/cerulean.bootstrap.css" rel="stylesheet" />-->
+    <!--<link href="Content/cyborg.bootstrap.css" rel="stylesheet" />-->
+    <link href="Content/minty.bootstrap.css" rel="stylesheet" />
+
+
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    
+    <script src="js/imprint.js"></script>
+
+
+</head>
+<body class="container" onload="loadData();">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">tecTrain</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="sessions.html">Sessions</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="charts.html">Charts</a></li>
+                <li class="nav-item active"><a class="nav-link" href="imprint.html">Imprint</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!--
+        Im Idealfall mit bootstrap
+            Menu
+            Footer
+
+            KM: _______________
+            Liter:_____________
+            Calculate Button
+
+            6.51l/100km-----------------
+
+            Tipp: KEIN FORM
+                input type="number"
+                onclick =
+                document.getElementById('xxx').value
+        -->
+
+    <div class="row">
+
+
+        <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+            <div class="form-group">
+                <span>Liter:</span>
+                <input class="form-control" type="number" min="0" max="100" id="liter" />
+            </div>
+            <div class="form-group">
+                <span>Kilometer:</span>
+                <input class="form-control" type="number" min="0" max="100" id="kilometer" />
+            </div>
+
+            <div class="form-group text-center">
+                <button class="btn btn-success" id="calcButton" onclick="calculate();">Calculate</button>
+                <button class="btn btn-danger">Calculate</button>
+                <button class="btn btn-info btn-sm">Calculate</button>
+                <button class="btn btn-link">Calculate</button>
+                <button class="btn btn-warning btn-lg">Calculate</button>
+            </div>
+
+            <div class="form-group">
+                <span id="resultSpan1">-</span>
+                <span id="resultSpan2">-</span>
+                <input class="form-control" type="number" min="0" max="100" id="result" disabled />
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Input Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage">Please enter a valid number!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <hr />
+        &copy; 2019 tecTrain
+    </footer>
+
+</body>
+</html>

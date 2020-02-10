@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        const numbers = [5, 1, 'Berndt']; //new Array();
+        numbers[numbers.length - 1] = '8';
+        numbers.push(9);
+        //let firstNum = numbers.shift(); //first num + remove
+        //let lastNum = numbers.pop(); //last num + remove
+
+        for (let i = 0; i < numbers.length; i++) {
+            //console.log(numbers[i]);
+            //console.warn(numbers[i]);
+            //console.error(numbers[i]);
+        }
+
+        //for (let number in numbers) {
+        //    console.log(number);
+        //}
+
+        //for (let number of numbers) {
+        //    console.log(number);
+        //}
+
+
+        numbers.forEach(function (number, i, arr) {
+            console.log(number + ' ' + i);
+        });
+
+
+    </script>
+
+
+</body>
+</html>
